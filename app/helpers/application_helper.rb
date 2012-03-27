@@ -1,7 +1,14 @@
 module ApplicationHelper
 	
 	def user_actions
-		link_to "Register", new_user_path
+    if current_user
+      user_actions = "#{link_to "Edit profile", edit_user_path(current_user)} | " +
+        "#{link_to "Logout", logout_path}"
+    else
+      user_actions = "#{link_to "Register", new_user_path} | " + 
+        "#{link_to "Login", login_path}"
+    end
+    raw user_actions
 	end
 
   def print_flash_messages
