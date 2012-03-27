@@ -1,7 +1,12 @@
-@import "compass"
-@import "screen"
-@import "print"
-@import "ie"
+@import "partials/base"
 @import "users"
 
-@import "blueprint/form"
+#masthead
+  text-align: center
+
+form
+  +blueprint-form
+
+//Forms
+.form_list
+  +no-bullets
