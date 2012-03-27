@@ -6,7 +6,9 @@
   = javascript_include_tag "application"
   = csrf_meta_tags
 
-%body
-  .container
-    .user_nav= user_actions
-    = yield
+%body.bp
+  #container
+    #nav
+      .user_nav= user_actions
+      %h1#masthead Gamez
+    #content= yield
