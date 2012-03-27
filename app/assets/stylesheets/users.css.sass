@@ -1,9 +1,13 @@
+@import "compass/utilities/tables"
+
 .user_nav
-	float: right
-	font-size: 12px
+  float: right
+  font-size: 12px
 
-#new_user
-	+blueprint-form
-
-#new_user .form_list
-	+no-bullets
+.users_table
+  table
+    $table-color : rgb(176, 196, 222)
+    +table-scaffolding
+    +inner-table-borders(1px, darken($table-color, 40%))
+    +outer-table-borders(2px)
+    +alternating-rows-and-columns($table-color, adjust-hue($table-color, -16deg), #111)
