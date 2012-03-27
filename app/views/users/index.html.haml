@@ -1,2 +1,13 @@
-%h1 Users#index
-%p Find me in app/views/users/index.html.haml
+.users_table
+	%table{ :cellspacing => "0" }
+		%thead
+			%tr.users_table_header
+				%th First Name
+				%th Last Name
+				%th Email
+		%tbody
+			- @users.each do |user|
+				%tr{ :class => cycle('odd', 'even')}
+					%td= user.first_name
+					%td= user.last_name
+					%td= user.email
