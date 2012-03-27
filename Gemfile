@@ -11,6 +11,7 @@ gem 'declarative_authorization'
 gem 'will_paginate'
 gem 'paperclip'
 gem 'recaptcha'
+gem 'RedCloth'
 
 
 # Gems used only for assets and not required
