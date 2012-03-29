@@ -1,3 +1,5 @@
+require 'integer_to_word'
+
 class User < ActiveRecord::Base
   include ActionView::Helpers::TextHelper
 	acts_as_authentic
@@ -34,12 +36,11 @@ class User < ActiveRecord::Base
       minutes_ago = time_since_last_login/minute
       last_login_str = time_ago_string(minutes_ago, "minute")
     elsif time_since_last_login < day
-      hours_ago = time_since_last_login/hour
-      hours_since_yesterday = current_time.strftime("%H").to_i
-      if hours_ago >= hours_since_yesterday
+      yesterday = current_time.yesterday.strftime("%s").to_i
+      if time_since_last_login >= yesterday
         last_login_str = "Yesterday"
       else
-        last_login_str = time_ago_string(hours_ago, "hour")
+        last_login_str = "Today"
       end
     elsif time_since_last_login < week
       days_ago = time_since_last_login/day
@@ -51,8 +52,7 @@ class User < ActiveRecord::Base
       months_ago = time_since_last_login/month
       last_login_str = time_ago_string(months_ago, "month")
     else
-      years_ago = time_since_last_login/year
-      last_login_str = time_ago_string(years_ago, "Year")
+      last_login_str = "Over a year ago"
     end
 
   end
@@ -60,7 +60,8 @@ class User < ActiveRecord::Base
   private
 
   def time_ago_string(time_ago, singular_unit)
-    pluralize(time_ago, singular_unit) + " ago"
+    string = pluralize(time_ago, singular_unit) + " ago"
+    string.gsub(/\d+/) { |num| num.to_i.to_word }.humanize
   end
   
 end
