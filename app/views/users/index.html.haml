@@ -2,16 +2,14 @@
   %table{ :cellspacing => "0" }
     %thead
       %tr.users_table_header
-        %th First Name
-        %th Last Name
+        %th Name
         %th Username
         %th Last Login
         %th Games
     %tbody
       - @users.each do |user|
         %tr
-          %td= link_to user.first_name, edit_user_path(user)
-          %td= user.last_name
+          %td= link_to user.full_name, edit_user_path(user)
           %td= user.username
-          %td
+          %td= user.last_login(Time.now)
           %td
