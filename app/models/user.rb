@@ -40,7 +40,8 @@ class User < ActiveRecord::Base
       if time_since_last_login >= yesterday
         last_login_str = "Yesterday"
       else
-        last_login_str = "Today"
+        hours_ago = time_since_last_login/hour
+        last_login_str = time_ago_string(hours_ago, "hour")
       end
     elsif time_since_last_login < week
       days_ago = time_since_last_login/day
