@@ -3,21 +3,26 @@
 		= error
 	%ol.form_list
 		%li
-			= form.label :first_name
-			= form.text_field :first_name
-		%li
-			= form.label :last_name
-			= form.text_field :last_name
-		%li
 			= form.label :username
 			= form.text_field :username
-		%li
-			= form.label :email
-			= form.text_field :email
 		%li
 			= form.label :password
 			= form.password_field :password
 		%li
 			= form.label :password_confirmation
 			= form.password_field :password_confirmation
+		%li
+			= form.label :first_name
+			= form.text_field :first_name
+		%li
+			= form.label :last_name
+			= form.text_field :last_name
+		%li
+			= form.label :email
+			= form.text_field :email
+		%li.clear
+			= form.label "Photo placeholder"
+		%li
+			= form.label :roles
+			= select("roles", "id", Role.all.map { |r| [r.name, r.id] })
 		%li= form.submit "Submit"
