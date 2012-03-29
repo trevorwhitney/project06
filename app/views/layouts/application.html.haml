@@ -10,6 +10,6 @@
   #container
     #nav
       .user_nav= user_actions
-      %h1#masthead Gamez
+      %h1#masthead= link_to "Gamez", root_url
     = print_flash_messages
     #content= yield
