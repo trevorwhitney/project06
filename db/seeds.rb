@@ -10,3 +10,23 @@
   Role.create(:name => role)
 end
 
+admin = User.new do |u|
+  u.first_name = "Joe"
+  u.last_name = "Admin"
+  u.password = "password"
+  u.username = "administrator"
+  u.email = "JoeAdmin@gamez.com"
+  u.roles = [1]
+end
+
+member = User.new do |u|
+  u.first_name = "Joe"
+  u.last_name = "Member"
+  u.password = "password"
+  u.username = "member"
+  u.email = "JoeMember@gamez.com"
+  u.roles = [2]
+end
+
+admin.save
+member.save
