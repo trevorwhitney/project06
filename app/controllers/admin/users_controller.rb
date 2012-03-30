@@ -1,6 +1,7 @@
 class Admin::UsersController < Admin::AdminController
   def new
   	@user = User.new
+    render 'users/new'
   end
 
   def create
@@ -30,9 +31,18 @@ class Admin::UsersController < Admin::AdminController
 
   def edit
     @user = User.find(params[:id])
+    @form_url = admin_user_path
+    render 'users/edit'
+  end
+
+  def show
+    @user = User.find(params[:id])
+    @edit_user_path = edit_admin_user_path(@user)
+    render 'users/show'
   end
 
   def index
   	@users = User.all
+    render 'users/index'
   end
 end

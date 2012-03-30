@@ -17,10 +17,14 @@ class Members::UsersController < Members::MembersController
 
   def edit
     @user = current_user
+    @form_url = members_update_profile_path(current_user)
+    render 'users/edit'
   end
 
   def show
     @user = current_user
+    @edit_user_path = members_edit_profile_path
+    render 'users/show'
   end
 
 end
