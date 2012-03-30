@@ -1,4 +1,4 @@
-= form_for @user do |form|
+= form_for @user, :url => { :controller => :admin_users } do |form|
 	- @user.errors.each do |error|
 		= error
 	%ol.form_list

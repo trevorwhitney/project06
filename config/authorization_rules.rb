@@ -3,8 +3,8 @@ authorization do
   end
 
   role :administrator do
-    has_permission_on [:admin_users, :roles], :to => [:index, :show, :edit, :create,
-      :update, :destroy]
+    has_permission_on [:admin_users, :roles], 
+      :to => [:index, :show, :edit, :create, :update, :destroy]
   end
 
   role :member do
