@@ -22,6 +22,12 @@ class UserTest < ActiveSupport::TestCase
     @member.save
   end
 
+  test "is_admin?" do
+    assert @admin.is_admin?
+    assert !@member.is_admin?
+  end
+
+
   test "last_login" do
     user = @admin
 
