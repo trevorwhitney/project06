@@ -9,8 +9,8 @@
 %body.bp
   #container
     #nav
-      .user_nav= user_actions
+      .user_nav= render "users/actions"
       %h1#masthead= link_to "Gamez", root_url
       = admin_nav unless @current_user.nil?
-    = print_flash_messages
+    = render "flash/messages"
     #content= yield
