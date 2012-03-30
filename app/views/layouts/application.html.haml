@@ -11,5 +11,6 @@
     #nav
       .user_nav= user_actions
       %h1#masthead= link_to "Gamez", root_url
+      = admin_nav unless @current_user.nil?
     = print_flash_messages
     #content= yield
