@@ -12,6 +12,7 @@ gem 'will_paginate'
 gem 'paperclip'
 gem 'recaptcha'
 gem 'RedCloth'
+gem 'pry'
 
 
 # Gems used only for assets and not required
