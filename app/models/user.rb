@@ -55,7 +55,6 @@ class User < ActiveRecord::Base
       last_login_str = time_ago_string(weeks_ago, "week")
     elsif time_since_last_login < year
       months_ago = time_since_last_login/month
-      binding.pry
       last_login_str = time_ago_string(months_ago, "month")
     else
       last_login_str = "Over a year ago"
