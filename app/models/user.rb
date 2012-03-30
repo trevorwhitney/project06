@@ -21,12 +21,12 @@ class User < ActiveRecord::Base
     now = current_time.strftime("%s").to_i
     last_login = last_login_at.strftime("%s").to_i
 
-    minute = 60
-    hour = minute * 60
-    day = hour * 24
-    week = day * 7
-    month = 2629743
-    year = 31556926
+    minute = 1.minute.to_i
+    hour = 1.hour.to_i
+    day = 1.day.to_i
+    week = 1.week.to_i
+    month = 1.month.to_i
+    year = 1.year.to_i
 
     time_since_last_login = now - last_login
 
@@ -45,12 +45,17 @@ class User < ActiveRecord::Base
       end
     elsif time_since_last_login < week
       days_ago = time_since_last_login/day
-      last_login_str = time_ago_string(days_ago, "day")
+      if days_ago <= 1
+        last_login_str = "Yesterday"
+      else
+        last_login_str = time_ago_string(days_ago, "day")
+      end
     elsif time_since_last_login < month
       weeks_ago = time_since_last_login/week
       last_login_str = time_ago_string(weeks_ago, "week")
     elsif time_since_last_login < year
       months_ago = time_since_last_login/month
+      binding.pry
       last_login_str = time_ago_string(months_ago, "month")
     else
       last_login_str = "Over a year ago"
