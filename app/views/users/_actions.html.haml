@@ -1,5 +1,5 @@
 %ul.user_actions
-  - if @current_user
+  - if current_user
     %li= raw "Logged in as #{currently_logged_in_user}."
     %li= current_role_link
     %li= link_to "Logout", logout_path
