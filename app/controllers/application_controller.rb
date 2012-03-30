@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def permission_denied
-    flash[:error] = "Sorry, you are not allowed to access that page."
+    flash[:error] = "You do not have permission to access #{request.path}"
     redirect_to root_url
   end
 
@@ -17,6 +17,24 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  def require_user
+    unless current_user
+      store_location
+      flash[:notice] = "You must be logged in to access this page"
+      redirect_to new_user_session_url
+      return false
+    end
+  end
+
+  def require_no_user
+    if current_user
+      store_location
+      flash[:notice] = "You must be logged out to access this page"
+      redirect_to account_url
+      return false
+    end
+  end
 
   def current_user_session
     return @current_user_session if defined?(@current_user_session)

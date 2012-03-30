@@ -1,7 +1,7 @@
 module ApplicationHelper
 
   def currently_logged_in_user
-    link_to @current_user.full_name, edit_user_path(@current_user)
+    link_to @current_user.full_name, edit_admin_user_path(@current_user)
   end
 
   def current_role_link
